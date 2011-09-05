@@ -11,7 +11,7 @@ class PerfectNumberFinderTest extends PHPUnit_Framework_TestCase {
      */
     public function testPerfection () {
         foreach($this->PERFECT_NUMS as $perfNum ) {
-            $this->assertTrue(PerfectNumberFinder::isPerfect($perfNum));
+            $this->assertTrue(PerfectNumberFinder::isPerfect($perfNum), 'test for:'.$perfNum);
         }
     }
 

@@ -13,9 +13,12 @@ class  PerfectNumberFinder {
         $factors[] = $number;
         for ( $i = 2; $i < sqrt($number); $i++) {
             // dodajemy w parach 36 = 2*18 = 3*12 = 4*9, latwo policzyc drugi
-            if ($number % $i == 0)
+            if ($number % $i == 0){
                 $factors[] = $i;
-                $factors[] = $number/$i;
+                if($number/$i != $i) {
+                    $factors[] = $number/$i;
+                }
+            }
         }
 
         // sum factors
