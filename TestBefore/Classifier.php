@@ -9,6 +9,8 @@ class Classifier {
 
     public function __construct($number){
         $this->number = $number;
+        $this->addFactor(1);
+        $this->addFactor($number);
     }
 
     private function isFactor($factor) {
@@ -16,12 +18,11 @@ class Classifier {
     }
 
     private function getFactors() {
-
         return $this->factors;
     }
 
-    private function addFactor() {
-
+    private function addFactor($factor) {
+        $this->factors[] = $factor;
     }
 
 }
