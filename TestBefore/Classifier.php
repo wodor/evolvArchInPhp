@@ -7,4 +7,8 @@ class Classifier {
         return $number % $factor == 0;
     }
 
+    public static function factorsFor($number) {
+
+    }
+
 }

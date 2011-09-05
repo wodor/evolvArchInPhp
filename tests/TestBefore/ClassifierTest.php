@@ -8,6 +8,11 @@ class ClassifierTest extends PHPUnit_Framework_TestCase {
         $this->assertTrue(Classifier::isFactor(1,10));
     }
 
+    public function testFactorsFor() {
+        $expected = array(1);
+        $this->assertSame($expected, Classifier::factorsFor(1));
+    }
+
 
 
 }
