@@ -1,6 +1,7 @@
 <?php
 
 use TestAfter\PerfectNumberFinder;
+
 class PerfectNumberFinderTest extends PHPUnit_Framework_TestCase {
 
     private $PERFECT_NUMS = array(6,28,496,8128,/*33550336*/);
