@@ -18,10 +18,7 @@ class ClassifierTest extends PHPUnit_Framework_TestCase {
 
         $classifier = new Classifier(1);
 
-        $getFactors = new ReflectionMethod('\TestBefore\Classifier', 'getFactors');
-        $getFactors->setAccessible(true);
-
-        $this->assertSame($expected, $getFactors->invoke($classifier));
+        $this->assertSame($expected,  $this->getFactors()->invoke($classifier));
     }
 
     public function testFactorsFor6() {
@@ -34,4 +31,23 @@ class ClassifierTest extends PHPUnit_Framework_TestCase {
 
         $this->assertSame($expected, $getFactors->invoke($classifier));
     }
+
+    public function testAddFactor() {
+        $classifier = new Classifier(6);
+
+        $addFactor = new ReflectionMethod('\TestBefore\Classifier', 'addFactor');
+        $addFactor->setAccessible(true);
+
+        $addFactor->invoke($classifier,2);
+        $addFactor->invoke($classifier,3);
+
+        $this->assertSame(array(1,2,3,6), $this->getFactors()->invoke($classifier));
+    }
+
+    private function getFactors() {
+        $getFactors = new ReflectionMethod('\TestBefore\Classifier', 'getFactors');
+        $getFactors->setAccessible(true);
+        return $getFactors;
+    }
+
 }

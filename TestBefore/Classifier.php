@@ -31,4 +31,8 @@ class Classifier {
         return $factors;
     }
 
+    private function addFactor() {
+
+    }
+
 }
