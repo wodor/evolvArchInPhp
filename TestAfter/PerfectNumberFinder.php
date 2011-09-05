@@ -2,7 +2,7 @@
 
 namespace TestAfter;
 
-class PerfectNumberFinder {
+class  PerfectNumberFinder {
 
 
     public static function isPerfect($number) {
@@ -11,7 +11,7 @@ class PerfectNumberFinder {
 
         $factors[] = 1;
         $factors[] = $number;
-        for ( $i = 2; $i < number; $i++) {
+        for ( $i = 2; $i < $number; $i++) {
             if ($number % $i == 0)
                 $factors[] = $i;
         }
