@@ -16,6 +16,7 @@ class  PerfectNumberFinder {
             if ($number % $i == 0){
                 $factors[] = $i;
                 if($number/$i != $i) {
+                    // zabezpieczenie na przypadek 28
                     $factors[] = $number/$i;
                 }
             }
