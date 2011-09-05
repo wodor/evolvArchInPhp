@@ -8,7 +8,7 @@ class Classifier {
     }
 
     public static function factorsFor($number) {
-
+        return array($number);
     }
 
 }
