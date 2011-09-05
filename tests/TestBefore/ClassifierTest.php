@@ -14,7 +14,7 @@ class ClassifierTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testFactorsFor1() {
-        $expected = array(1);
+        $expected = array(1=>1);
 
         $classifier = new Classifier(1);
 
@@ -39,9 +39,8 @@ class ClassifierTest extends PHPUnit_Framework_TestCase {
         $addFactor->setAccessible(true);
 
         $addFactor->invoke($classifier,2);
-        $addFactor->invoke($classifier,3);
 
-        $this->assertEquals(array(1=>1,2=>2,3=>3,6=>6), $this->getFactorsMethod()->invoke($classifier));
+        $this->assertEquals(array(1=>1,2=>2,6=>6), $this->getFactorsMethod()->invoke($classifier));
     }
 
     private function getFactorsMethod() {
