@@ -30,6 +30,7 @@ class Classifier {
 
     private function addFactor($factor) {
         $this->factors[(int)$factor] = $factor;
+        $this->factors[(int)($this->number/$factor)] =  $this->number/$factor;
     }
 
     private function calculateFactors() {
