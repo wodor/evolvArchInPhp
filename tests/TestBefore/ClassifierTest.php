@@ -22,7 +22,7 @@ class ClassifierTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testFactorsFor6() {
-        $expected = array(1=>1,2=>2,3=>3,6=>6);
+        $expected = $this->getFactorsInExpectedFormat(array(1,2,3,6));
 
         $classifier = new Classifier(6);
 
@@ -33,14 +33,19 @@ class ClassifierTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testFactorsFor100() {
-        $expected = $this->getFactorsInExpectedFormat(1, 100, 2, 50, 4, 25, 5, 20, 10);
+        $expected = $this->getFactorsInExpectedFormat(array(1, 100, 2, 50, 4, 25, 5, 20, 10));
 
-        $classifier = new Classifier(6);
+        $classifier = new Classifier(100);
 
         $getFactors = new ReflectionMethod('\TestBefore\Classifier', 'getFactors');
         $getFactors->setAccessible(true);
 
         $this->assertEquals($expected, $getFactors->invoke($classifier));
+    }
+
+    public function testFactorsForMaxInt() {
+        $classifier = new Classifier(PHP_INT_MAX);
+        $this->assertContains(2147483647, $classifier-getFactorsMethod()->invoke($classifier));
     }
 
     public function testAddFactor() {
@@ -56,12 +61,18 @@ class ClassifierTest extends PHPUnit_Framework_TestCase {
         $addFactor->invoke($classifier,2);
         $addFactor->invoke($classifier,77);
 
-        $this->assertEquals(array(2=>2,77=>77), $this->getFactorsMethod()->invoke($classifier));
+        $this->assertEquals($this->getFactorsInExpectedFormat(array(2,77)), $this->getFactorsMethod()->invoke($classifier));
     }
 
-    private getFactorsInExpectedFormat($array) {
-       return array_combine($array,$array);
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testExceptionOnNegativeNumber() {
+        $classifier = new Classifier(-5);
+    }
 
+    private function getFactorsInExpectedFormat($array) {
+       return array_combine($array,$array);
     }
 
     private function getFactorsMethod() {

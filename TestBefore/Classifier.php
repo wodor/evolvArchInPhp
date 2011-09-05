@@ -11,6 +11,9 @@ class Classifier {
 
 
     public function __construct($number){
+        if($number <= 0 ) {
+            throw  new \InvalidArgumentException("negative numbers are never perfect");
+        }
         $this->number = $number;
         $this->addFactor(1);
         $this->addFactor($number);
