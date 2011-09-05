@@ -34,7 +34,7 @@ class Classifier {
     }
 
     private function calculateFactors() {
-        for($i = 2; $i < sqrt($this->number); $i++) {
+        for($i = 2; $i <= sqrt($this->number); $i++) {
             if($this->isFactor($i)) {
                 $this->addFactor($i);
             }
