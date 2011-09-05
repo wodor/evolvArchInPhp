@@ -3,13 +3,18 @@ namespace TestBefore;
 
 class Classifier {
 
+    private $number;
 
-    public static function isFactor($factor, $number) {
-        return $number % $factor == 0;
+    public function __construct($number){
+        $this->number = $number;
     }
 
-    public static function factorsFor($number) {
-        return array($number);
+    public function isFactor($factor) {
+        return $this->number % $factor == 0;
+    }
+
+    public function getFactors($number) {
+        return array($this->number);
     }
 
 }
