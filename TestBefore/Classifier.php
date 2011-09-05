@@ -14,7 +14,21 @@ class Classifier {
     }
 
     private function getFactors() {
-        return array($this->number);
+
+        $factors = array();
+        $factors[] = 1;
+
+        for($i = 2; $i < $this->number; $i++) {
+            if($this->isFactor($i)) {
+                $factors[] = $i;
+            }
+        }
+
+        $factors[] = $this->number;
+        // allow me not to solve problem that appears in c#
+        // but not in PHP
+
+        return $factors;
     }
 
 }
