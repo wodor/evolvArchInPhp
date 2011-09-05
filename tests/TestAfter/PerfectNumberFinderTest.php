@@ -15,7 +15,17 @@ class PerfectNumberFinderTest extends PHPUnit_Framework_TestCase {
         }
     }
 
-
+    /**
+     *
+     * Enter description here ...
+     */
+    public function testNonPerfection() {
+        for ($i = 2; $i < 10000; $i++) {
+            if(!in_array($i,$this->PERFECT_NUMS)) {
+                $this->assertFalse(PerfectNumberFinder::isPerfect($i));
+            }
+        }
+    }
 
 
 }
