@@ -7,10 +7,14 @@ class Classifier {
 
     private $factors;
 
+    private $factorsCalculated = false;
+
+
     public function __construct($number){
         $this->number = $number;
         $this->addFactor(1);
         $this->addFactor($number);
+        $this->calculateFactors();
     }
 
     private function isFactor($factor) {
@@ -24,5 +28,14 @@ class Classifier {
     private function addFactor($factor) {
         $this->factors[(int)$factor] = $factor;
     }
+
+    private function calculateFactors() {
+        for($i = 2; $i < $this->number; $i++) {
+            if($this->isFactor($i)) {
+                $this->addFactor($i);
+            }
+        }
+    }
+
 
 }

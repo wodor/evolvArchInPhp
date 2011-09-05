@@ -22,25 +22,30 @@ class ClassifierTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testFactorsFor6() {
-        $expected = array(1,2,3,6);
+        $expected = array(1=>1,2=>2,3=>3,6=>6);
 
         $classifier = new Classifier(6);
 
         $getFactors = new ReflectionMethod('\TestBefore\Classifier', 'getFactors');
         $getFactors->setAccessible(true);
 
-        $this->assertSame($expected, $getFactors->invoke($classifier));
+        $this->assertEquals($expected, $getFactors->invoke($classifier));
     }
 
     public function testAddFactor() {
-        $classifier = new Classifier(6);
+
+        $classifier = $this->getMockBuilder('\TestBefore\Classifier')
+            ->disableOriginalConstructor()
+            ->setMethods(array('none'))
+            ->getMock();
 
         $addFactor = new ReflectionMethod('\TestBefore\Classifier', 'addFactor');
         $addFactor->setAccessible(true);
 
         $addFactor->invoke($classifier,2);
+        $addFactor->invoke($classifier,77);
 
-        $this->assertEquals(array(1=>1,2=>2,6=>6), $this->getFactorsMethod()->invoke($classifier));
+        $this->assertEquals(array(2=>2,77=>77), $this->getFactorsMethod()->invoke($classifier));
     }
 
     private function getFactorsMethod() {
