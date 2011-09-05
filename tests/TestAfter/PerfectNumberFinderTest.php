@@ -26,6 +26,4 @@ class PerfectNumberFinderTest extends PHPUnit_Framework_TestCase {
             }
         }
     }
-
-
 }
