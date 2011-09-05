@@ -9,11 +9,11 @@ class Classifier {
         $this->number = $number;
     }
 
-    public function isFactor($factor) {
+    private function isFactor($factor) {
         return $this->number % $factor == 0;
     }
 
-    public function getFactors($number) {
+    private function getFactors($number) {
         return array($this->number);
     }
 
