@@ -22,7 +22,7 @@ class Classifier {
     }
 
     private function addFactor($factor) {
-        $this->factors[] = $factor;
+        $this->factors[(int)$factor] = $factor;
     }
 
 }
