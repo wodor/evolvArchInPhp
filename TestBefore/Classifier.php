@@ -5,6 +5,8 @@ class Classifier {
 
     private $number;
 
+    private $factors;
+
     public function __construct($number){
         $this->number = $number;
     }
@@ -15,20 +17,7 @@ class Classifier {
 
     private function getFactors() {
 
-        $factors = array();
-        $factors[] = 1;
-
-        for($i = 2; $i < $this->number; $i++) {
-            if($this->isFactor($i)) {
-                $factors[] = $i;
-            }
-        }
-
-        $factors[] = $this->number;
-        // allow me not to solve problem that appears in c#
-        // but not in PHP
-
-        return $factors;
+        return $this->factors;
     }
 
     private function addFactor() {
