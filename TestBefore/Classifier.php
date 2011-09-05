@@ -3,6 +3,8 @@ namespace TestBefore;
 
 class Classifier {
 
-    //public function
+    public static function isFactor($factor, $number) {
+        return $number % $factor == 0;
+    }
 
 }
