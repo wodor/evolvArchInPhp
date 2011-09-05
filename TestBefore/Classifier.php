@@ -13,7 +13,7 @@ class Classifier {
         return $this->number % $factor == 0;
     }
 
-    private function getFactors($number) {
+    private function getFactors() {
         return array($this->number);
     }
 
