@@ -17,7 +17,7 @@ class PerfectNumberFinderTest extends PHPUnit_Framework_TestCase {
 
     /**
      *
-     * Enter description here ...
+     * Sprawdzmy czy nie bieże niedoskonałych jako doskonałe
      */
     public function testNonPerfection() {
         for ($i = 2; $i < 10000; $i++) {
