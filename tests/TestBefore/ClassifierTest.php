@@ -3,6 +3,32 @@
 use TestBefore\Classifier;
 class ClassifierTest extends PHPUnit_Framework_TestCase {
 
+ private $PERFECT_NUMS = array(6,28,496,8128,/*33550336*/);
+
+    /**
+     * Sprawdzamy czy prawidlowo okresla liczby doskonałe
+     * jako doskonałe
+     */
+    public function testPerfection () {
+        foreach($this->PERFECT_NUMS as $perfNum ) {
+            $classifier = new Classifier($perfNum);
+            $this->assertTrue($classifier->isPerfect(), 'test for:'.$perfNum);
+        }
+    }
+
+    /**
+     *
+     * Enter description here ...
+     */
+    public function testNonPerfection() {
+        for ($i = 2; $i < 10000; $i++) {
+            if(!in_array($i,$this->PERFECT_NUMS)) {
+                $classifier = new Classifier($i);
+                $this->assertFalse($classifier->isPerfect());
+            }
+        }
+    }
+
 
     public function testIs1aFactorOf10() {
         $classifier = new Classifier(10);
@@ -43,6 +69,7 @@ class ClassifierTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals($expected, $getFactors->invoke($classifier));
     }
 
+
     public function teDISABLEDstFactorsForMaxInt() {
         $classifier = new Classifier(PHP_INT_MAX);
         $this->assertContains(2147483647, $classifier-getFactorsMethod()->invoke($classifier));
@@ -75,6 +102,8 @@ class ClassifierTest extends PHPUnit_Framework_TestCase {
     public function testExceptionOnNegativeNumber() {
         $classifier = new Classifier(-5);
     }
+
+
 
     private function getFactorsInExpectedFormat($array) {
        return array_combine($array,$array);

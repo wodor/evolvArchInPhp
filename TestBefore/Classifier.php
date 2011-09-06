@@ -20,6 +20,11 @@ class Classifier {
         $this->calculateFactors();
     }
 
+    public function isPerfect() {
+        $this->calculateFactors(); // gdyby to bylo tutaj od poczatku testy bylyby latwiejsze
+        return array_sum($this->getFactors()) - $this->number == $this->number;
+    }
+
     private function isFactor($factor) {
         return $this->number % $factor == 0;
     }
